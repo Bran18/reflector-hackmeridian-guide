@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "sync:content": "cp ../reflector.md ./content/reflector.md",
+    "sync:content": "if [ -f ../reflector.md ]; then cp ../reflector.md ./content/reflector.md; fi",
     "predev": "npm run sync:content",
     "prebuild": "npm run sync:content",
     "dev": "next dev",
