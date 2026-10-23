@@ -79,17 +79,19 @@ const REPOS = [
   },
 ];
 
+export const revalidate = 60;
+
 export default function HomePage() {
   return (
     <>
       <Hero />
 
-      <section className="border-y border-rf-line bg-rf-section">
+      <section className="band-ice border-y border-[#9ec5ce]">
         <div className="mx-auto grid max-w-6xl sm:grid-cols-2 lg:grid-cols-4">
           {DEADLINES.map((item) => (
             <div
               key={item.label}
-              className="border-b border-rf-line px-6 py-7 last:border-b-0 sm:border-r sm:[&:nth-child(2n)]:border-r-0 lg:border-b-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0"
+              className="border-b border-[#9ec5ce] px-6 py-7 last:border-b-0 sm:border-r sm:[&:nth-child(2n)]:border-r-0 lg:border-b-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(4n)]:border-r-0"
             >
               <p className="font-mono text-xs text-rf-cyan">{item.label}</p>
               <p className="mt-2 text-sm leading-snug">{item.detail}</p>
@@ -98,7 +100,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-5 py-16 sm:px-8">
+      <section className="band-void px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -129,7 +131,7 @@ export default function HomePage() {
             {CLIENTS.map((client) => (
               <div
                 key={client.name}
-                className="border border-rf-line bg-rf-section p-5"
+                className="border border-rf-line bg-rf-panel p-5"
               >
                 <p className="font-mono text-xs text-rf-cyan">{client.use}</p>
                 <h3 className="mt-1 font-display text-xl tracking-wide">
@@ -142,10 +144,10 @@ export default function HomePage() {
             ))}
           </div>
 
-          <pre className="mt-8 overflow-x-auto rounded-[0.3rem] border border-rf-line bg-rf-deep p-4 font-mono text-[0.78rem] leading-relaxed text-rf-ice">
+          <pre className="mt-8 overflow-x-auto rounded-[0.3rem] border border-rf-line bg-[#041014] p-4 font-mono text-[0.78rem] leading-relaxed text-rf-ice">
             npm i @reflector/contract-client @stellar/stellar-sdk
           </pre>
-          <pre className="mt-3 overflow-x-auto rounded-[0.3rem] border border-rf-line bg-rf-deep p-5 font-mono text-[0.78rem] leading-relaxed text-rf-ice">
+          <pre className="mt-3 overflow-x-auto rounded-[0.3rem] border border-rf-line bg-[#041014] p-5 font-mono text-[0.78rem] leading-relaxed text-rf-ice">
             {PULSE_SNIPPET}
           </pre>
           <p className="mt-3 text-xs text-rf-muted">
@@ -182,7 +184,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-rf-line bg-rf-deep px-5 py-16 sm:px-8">
+      <section className="band-ice border-y border-[#9ec5ce] px-5 py-16 sm:px-8">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="font-display text-3xl tracking-wide">
@@ -214,7 +216,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-5 py-16 sm:px-8">
+      <section className="band-void px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <h2 className="font-display text-3xl tracking-wide">
             Stellar context for AI agents
@@ -231,7 +233,7 @@ export default function HomePage() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col gap-1 px-6 py-5 transition-colors hover:bg-rf-section sm:flex-row sm:items-center sm:justify-between"
+                  className="flex flex-col gap-1 px-6 py-5 transition-colors hover:bg-rf-panel sm:flex-row sm:items-center sm:justify-between"
                 >
                   <span className="font-semibold">{item.name}</span>
                   <span className="text-sm text-rf-muted">{item.note}</span>
@@ -242,17 +244,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-rf-line bg-rf-section px-5 py-16 sm:px-8">
+      <section className="band-ice border-t border-[#9ec5ce] px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <h2 className="font-display text-3xl tracking-wide">Clone and ship</h2>
-          <ul className="mt-8 divide-y divide-rf-line border border-rf-line bg-rf-night">
+          <ul className="mt-8 divide-y divide-[#9ec5ce] border border-[#9ec5ce] bg-white">
             {REPOS.map((repo) => (
               <li key={repo.name}>
                 <a
                   href={repo.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col gap-1 px-6 py-5 transition-colors hover:bg-rf-section sm:flex-row sm:items-center sm:justify-between"
+                  className="flex flex-col gap-1 px-6 py-5 transition-colors hover:bg-[#c5ebf4] sm:flex-row sm:items-center sm:justify-between"
                 >
                   <span className="font-semibold">{repo.name}</span>
                   <span className="text-sm text-rf-muted">{repo.note}</span>
@@ -263,12 +265,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-rf-line bg-rf-deep px-5 py-14 sm:px-8">
+      <section className="band-cyan px-5 py-14 sm:px-8">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <h2 className="font-display text-3xl tracking-wide md:max-w-lg">
             Read the checklist before submissions close Monday at 12:00.
           </h2>
-          <Link href="/guide" className="rf-button rf-button--cyan shrink-0">
+          <Link href="/guide" className="rf-button rf-button--cyan shrink-0 !bg-rf-deep !text-rf-cyan">
             Open full guide
           </Link>
         </div>

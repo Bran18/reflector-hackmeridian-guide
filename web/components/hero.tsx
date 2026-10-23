@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { ReflectorMark } from "@/components/reflector-mark";
+import { getBtcTick } from "@/lib/pulse";
 
-export function Hero() {
+export async function Hero() {
+  const tick = await getBtcTick();
+
   return (
     <section className="hero">
       <div className="hero-rings" aria-hidden />
@@ -37,14 +40,24 @@ export function Hero() {
           <div className="hero-tick-head">
             <ReflectorMark className="h-10 w-10" spin />
             <div>
-              <p className="hero-tick-pair">BTC / USD</p>
-              <p className="hero-tick-feed">Pulse · CEX/DEX · testnet example</p>
+              <p className="hero-tick-pair">
+                BTC / {tick?.baseLabel ?? "USD"}
+              </p>
+              <p className="hero-tick-feed">
+                Pulse · CEX/DEX · mainnet lastPrice
+              </p>
             </div>
           </div>
-          <p className="hero-tick-price">
-            <span>79,601</span>
-            <span className="hero-tick-frac">.303732035</span>
-          </p>
+          {tick ? (
+            <p className="hero-tick-price">
+              <span>{tick.whole}</span>
+              {tick.fraction ? (
+                <span className="hero-tick-frac">.{tick.fraction}</span>
+              ) : null}
+            </p>
+          ) : (
+            <p className="hero-tick-price hero-tick-missing">no usable quote</p>
+          )}
           <dl className="hero-tick-meta">
             <div>
               <dt>method</dt>
@@ -52,11 +65,17 @@ export function Hero() {
             </div>
             <div>
               <dt>decimals</dt>
-              <dd>14</dd>
+              <dd>{tick ? String(tick.decimals) : "—"}</dd>
             </div>
             <div>
-              <dt>resolution</dt>
-              <dd>300s</dd>
+              <dt>age</dt>
+              <dd>
+                {tick
+                  ? tick.stale
+                    ? `${tick.ageSec}s (stale)`
+                    : `${tick.ageSec}s`
+                  : "—"}
+              </dd>
             </div>
             <div>
               <dt>if undefined</dt>

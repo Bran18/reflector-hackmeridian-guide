@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --rf-night: #1b414a;
-  --rf-deep: #12363f;
-  --rf-section: #1a444e;
-  --rf-panel: #272c2e;
+  --rf-night: #071014;
+  --rf-deep: #0a1f26;
+  --rf-section: #14343c;
+  --rf-panel: #102830;
+  --rf-ice-band: #d7f3fa;
   --rf-cyan: #08b5e5;
   --rf-primary: #0691b7;
   --rf-ice: #f2fcff;
@@ -22,6 +23,7 @@
   --color-rf-deep: var(--rf-deep);
   --color-rf-section: var(--rf-section);
   --color-rf-panel: var(--rf-panel);
+  --color-rf-ice-band: var(--rf-ice-band);
   --color-rf-cyan: var(--rf-cyan);
   --color-rf-primary: var(--rf-primary);
   --color-rf-ice: var(--rf-ice);
@@ -261,6 +263,51 @@ button:focus-visible {
 .hero-tick-frac {
   color: color-mix(in srgb, var(--rf-cyan) 55%, var(--rf-muted));
   font-size: 0.62em;
+}
+
+.hero-tick-missing {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--rf-muted);
+  letter-spacing: 0;
+}
+
+.band-ice {
+  background: var(--rf-ice-band);
+  color: var(--rf-ink);
+}
+
+.band-ice .text-rf-muted,
+.band-ice .text-rf-cyan {
+  color: #3a5c66;
+}
+
+.band-ice .font-mono.text-rf-cyan,
+.band-ice code {
+  color: var(--rf-primary);
+}
+
+.band-ice .rf-button--ghost {
+  color: var(--rf-ink);
+  border-color: #9ec5ce;
+}
+
+.band-ice a:hover {
+  background: color-mix(in srgb, white 55%, var(--rf-ice-band));
+}
+
+.band-void {
+  background: var(--rf-night);
+  color: var(--rf-text);
+}
+
+.band-cyan {
+  background: var(--rf-cyan);
+  color: var(--rf-deep);
+}
+
+.band-cyan .rf-button--cyan {
+  background: var(--rf-deep);
+  color: var(--rf-cyan);
 }
 
 .hero-tick-meta {
